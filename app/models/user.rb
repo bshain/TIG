@@ -14,4 +14,6 @@ class User < ActiveRecord::Base
   has_many :inspirers, through: :outbound_inspirations, foreign_key: "MemberID"
   has_many :admirers, through: :inbound_inspirations, foreign_key: "InspiredMemberID"
 
+  ignore_columns "DOB"
+
 end
