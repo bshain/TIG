@@ -10,3 +10,31 @@ list.each do |r1|
 	end
 	matrix << inner_matrix
 end
+
+
+What does this do?
+
+
+-- DELETE FROM Users WHERE countryid=0;
+
+-- users in africa
+/* SELECT u.UserID, u.CountryID, r.regionid FROM users u 
+		INNER JOIN countries c ON c.countryid = u.countryid 
+		INNER JOIN countriesregions cr ON cr.countryid = c.countryid
+		INNER JOIN regions r ON r.regionid = cr.regionid
+		WHERE r.regionid=1		 */
+
+
+
+
+SELECT u.UserID, u.CountryID, r.regionid FROM users u 
+		INNER JOIN countries c ON c.countryid = u.countryid 
+		INNER JOIN countriesregions cr ON cr.countryid = c.countryid
+		INNER JOIN regions r ON r.regionid = cr.regionid;
+
+
+-- listing friends
+SELECT u.userid, u.username, f.userid, f.username FROM users u
+	INNER JOIN updatesfr uf ON uf.memberid = u.userid
+	INNER JOIN users f ON f.userid = uf.friendid
+	LIMIT 100;
