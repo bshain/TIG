@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20140311001719) do
 
   create_table "Countries", primary_key: "CountryID", force: true do |t|
     t.string  "CountryName",    limit: 64,  default: "",    null: false
@@ -104,32 +104,14 @@ ActiveRecord::Schema.define(version: 0) do
 
   create_table "Users", id: false, force: true do |t|
     t.integer   "UserID",                  limit: 3,                                   null: false
-    t.string    "Username",                limit: 128
-    t.string    "Password",                            default: "",                    null: false
-    t.string    "Pre",                     limit: 10,  default: "",                    null: false
     t.string    "Name",                                default: "",                    null: false
     t.string    "DisplayName",                         default: "",                    null: false
-    t.string    "DiscussTitle",                        default: "",                    null: false
-    t.string    "Email",                   limit: 254, default: "",                    null: false
-    t.string    "Email2",                  limit: 254, default: "",                    null: false
-    t.string    "Email3",                  limit: 254, default: "",                    null: false
-    t.boolean   "PrimaryEmailID",                      default: true,                  null: false
     t.boolean   "UserTypeID",                          default: false,                 null: false
     t.integer   "CountryID",               limit: 2,   default: 0,                     null: false
     t.integer   "CountryBornID",           limit: 2,   default: 0,                     null: false
-    t.boolean   "flEditor",                            default: false,                 null: false
-    t.string    "Phone",                   limit: 36
-    t.string    "Fax",                     limit: 36
-    t.string    "WorkPhone",               limit: 36,                                  null: false
     t.integer   "Age",                     limit: 2
-    t.date      "DOB"
     t.string    "Gender",                  limit: 1,   default: "",                    null: false
-    t.integer   "RandOrder",               limit: 3,                                   null: false
     t.boolean   "flStaff",                             default: false,                 null: false
-    t.boolean   "flDOBGender",                         default: false,                 null: false
-    t.boolean   "flLocation",                          default: false,                 null: false
-    t.boolean   "flFriendBoff",                        default: true,                  null: false
-    t.boolean   "flBdayShare",                         default: true,                  null: false
     t.boolean   "flWiped",                             default: false,                 null: false
     t.boolean   "flPartnerShow",                       default: true,                  null: false
     t.boolean   "flBanIM",                             default: false,                 null: false
@@ -215,7 +197,6 @@ ActiveRecord::Schema.define(version: 0) do
     t.integer   "flNECC",                  limit: 1,   default: 0,                     null: false
     t.boolean   "flHideCountryBornTab",                default: false,                 null: false
     t.boolean   "flProfileHideFriends",                default: false,                 null: false
-    t.boolean   "flProfileHidePastEvents",             default: false,                 null: false
     t.boolean   "flMyTIGHome",                         default: false,                 null: false
     t.integer   "flAddedBySignupVersion7", limit: 1,   default: 0,                     null: false
   end
@@ -225,24 +206,14 @@ ActiveRecord::Schema.define(version: 0) do
   add_index "users", ["CountryBornID"], name: "CountryBornID", using: :btree
   add_index "users", ["CountryID", "CityID", "UserID"], name: "CountryID_2", using: :btree
   add_index "users", ["CountryID", "StateID", "UserID"], name: "CountryID", using: :btree
-  add_index "users", ["DOB"], name: "DOB", using: :btree
   add_index "users", ["DateJoined"], name: "DateJoined", using: :btree
-  add_index "users", ["Email", "Email2", "Email3"], name: "EmailCheck", using: :btree
-  add_index "users", ["Email"], name: "Email", using: :btree
-  add_index "users", ["Email2", "PrimaryEmailID"], name: "Email2", using: :btree
-  add_index "users", ["Email2"], name: "Email2_2", using: :btree
-  add_index "users", ["Email3", "PrimaryEmailID"], name: "Email3", using: :btree
-  add_index "users", ["Email3"], name: "Email3_2", using: :btree
-  add_index "users", ["Fax"], name: "Fax", using: :btree
   add_index "users", ["Gender"], name: "Gender", using: :btree
   add_index "users", ["HearTIG"], name: "HearTIG", using: :btree
   add_index "users", ["JoinReasonID"], name: "JoinReasonID", using: :btree
   add_index "users", ["LeaveAlone"], name: "LeaveAlone", using: :btree
   add_index "users", ["Name"], name: "Name", using: :btree
-  add_index "users", ["RandOrder"], name: "RandOrder", using: :btree
   add_index "users", ["StateID", "smImageName"], name: "StateID", using: :btree
   add_index "users", ["UserTypeID"], name: "UserTypeID", using: :btree
-  add_index "users", ["Username"], name: "Username", using: :btree
   add_index "users", ["edflTeacher"], name: "edflTeacher", using: :btree
   add_index "users", ["flHideStatusID", "ActiveRank", "StateID"], name: "flHideStatusID", using: :btree
   add_index "users", ["nProfileViews"], name: "nProfileViews", using: :btree
