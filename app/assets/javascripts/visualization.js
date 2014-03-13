@@ -123,14 +123,16 @@ function populateTablePercent(region) {
     var fromArray = generateFromArray(region, matrix);
     var toArray = generateToArray(region, matrix);
     for (var i = 0; i < fromArray.length; i++) {
-        $("#r" + (i + 1) + "from").text(fromArray[i] / fromArray.reduce(function(previousValue, currentValue, index, array){
-          return previousValue + currentValue;
-        }));
-        $("#r" + (i + 1) + "to").text(toArray[i] / toArray.reduce(function(previousValue, currentValue, index, array){
-          return previousValue + currentValue;
-        }));
+        $("#r" + (i + 1) + "from").text(fromArray[i] / sumArray(fromArray));
+        $("#r" + (i + 1) + "to").text(toArray[i] / sumArray(toArray));
     };
 };
+
+function sumArray(array){
+   return array.reduce(function(previousValue, currentValue, index, array){
+          return previousValue + currentValue;
+        });
+}
 
 $(".arcs").on("click", function () {
     var buttonid = $(this).attr("id");
