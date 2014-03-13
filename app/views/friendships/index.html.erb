@@ -1,4 +1,10 @@
-<html class="ocks-org do-not-copy">
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+
 <meta charset="utf-8">
 <title>TIG Friends</title>
 <style>
@@ -40,103 +46,57 @@ path.chord {
 
 <p>Scroll down for more!
 
-<p>Built with <a href="http://d3js.org/">d3.js</a>.</aside>
+<div>
+  <% render "visualization" %>
+</div>
 
-<script src="http://d3js.org/d3.v2.min.js?2.8.1"></script>
-<script>
+<table>
+    <tr>
+        <td>R1</td>
+        <td id="r1to"></td>
+        <td id="r1from"></td>
+    </tr>
+    <tr>
+      <td>r2</td>
+      <td id="r2to"></td>
+      <td id="r2from"></td>
+    </tr>
+    <tr>
+      <td>r3</td>
+      <td id="r3to"></td>
+      <td id="r3from"></td>
+    </tr>
+    <tr>
+      <td>r4</td>
+      <td id="r4to"></td>
+      <td id="r4from"></td>
+    </tr>
+    <tr>
+      <td>r5</td>
+      <td id="r5to"></td>
+      <td id="r5from"></td>
+    </tr>
+    <tr>
+      <td>r6</td>
+      <td id="r6to"></td>
+      <td id="r6from"></td>
+    </tr>
+    <tr>
+      <td>r7</td>
+      <td id="r7to"></td>
+      <td id="r7from"></td>
+    </tr>
+    <tr>
+      <td>r8</td>
+      <td id="r8to"></td>
+      <td id="r8from"></td>
+    </tr>
+    <tr>
+      <td>r9</td>
+      <td id="r9to"></td>
+      <td id="r9from"></td>
+    </tr>
+</table>
 
-var width = 750,
-    height = 750,
-    outerRadius = Math.min(width, height) / 2 - 10,
-    innerRadius = outerRadius - 24;
-
-var formatPercent = d3.format(".1%");
-
-var arc = d3.svg.arc()
-    .innerRadius(innerRadius)
-    .outerRadius(outerRadius);
-
-var layout = d3.layout.chord()
-    .padding(.04)
-    .sortSubgroups(d3.descending)
-    .sortChords(d3.ascending);
-
-var path = d3.svg.chord()
-    .radius(innerRadius);
-
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height)
-  .append("g")
-    .attr("id", "circle")
-    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
-
-svg.append("circle")
-    .attr("r", outerRadius);
-
-d3.csv("cities.csv", function(cities) {
-  d3.json("matrix.json", function(matrix) {
-
-    // Compute the chord layout.
-    layout.matrix(matrix);
-
-    // Add a group per neighborhood.
-    var group = svg.selectAll(".group")
-        .data(layout.groups)
-      .enter().append("g")
-        .attr("class", "group")
-        .on("mouseover", mouseover);
-
-    // Add a mouseover title.
-    group.append("title").text(function(d, i) {
-      return cities[i].name + ": " + formatPercent(d.value) + " of origins";
-    });
-
-    // Add the group arc.
-    var groupPath = group.append("path")
-        .attr("id", function(d, i) { return "group" + i; })
-        .attr("d", arc)
-        .style("fill", function(d, i) { return cities[i].color; });
-
-    // Add a text label.
-    var groupText = group.append("text")
-        .attr("x", 6)
-        .attr("dy", 15);
-
-    groupText.append("textPath")
-        .attr("xlink:href", function(d, i) { return "#group" + i; })
-        .text(function(d, i) { return cities[i].name; });
-
-    // Remove the labels that don't fit. :(
-    groupText.filter(function(d, i) { return groupPath[0][i].getTotalLength() / 2 - 16 < this.getComputedTextLength(); })
-        .remove();
-        //Here, we need to truncate or abbreviate. Maybe add another column with an abbreviated name
-
-    // Add the chords.
-    var chord = svg.selectAll(".chord")
-        .data(layout.chords)
-      .enter().append("path")
-        .attr("class", "chord")
-        .style("fill", function(d) { return cities[d.source.index].color; })
-        .attr("d", path);
-
-    // Add an elaborate mouseover title for each chord.
-    chord.append("title").text(function(d) {
-      return cities[d.source.index].name
-          + " → " + cities[d.target.index].name
-          + ": " + formatPercent(d.source.value)
-          + "\n" + cities[d.target.index].name
-          + " → " + cities[d.source.index].name
-          + ": " + formatPercent(d.target.value);
-    });
-
-    function mouseover(d, i) {
-      chord.classed("fade", function(p) {
-        return p.source.index != i
-            && p.target.index != i;
-      });
-    }
-  });
-});
-
-</script>
+</body>
+</html>
