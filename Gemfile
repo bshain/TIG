@@ -34,6 +34,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'foundation-rails'
+
 # gem 'd3-rails'
 
 # Use ActiveModel has_secure_password

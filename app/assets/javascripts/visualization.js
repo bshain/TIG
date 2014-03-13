@@ -3,7 +3,7 @@ $(document).ready(function(){
   var width = 750,
       height = 750,
       outerRadius = Math.min(width, height) / 2 - 10,
-      innerRadius = outerRadius - 30;
+      innerRadius = outerRadius - 20;
 
   var formatPercent = d3.format(".1%");
 
@@ -12,12 +12,12 @@ $(document).ready(function(){
       .outerRadius(outerRadius);
 
   var layout = d3.layout.chord()
-      .padding(.04)
+      .padding(.06)
       .sortSubgroups(d3.descending)
       .sortChords(d3.ascending);
 
   var path = d3.svg.chord()
-      .radius(innerRadius);
+      .radius(innerRadius-5);
 
   var svg = d3.select("#visualization").append("svg")
       .attr("width", width)
@@ -27,10 +27,10 @@ $(document).ready(function(){
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
   svg.append("circle")
-      .attr("r", 10);
+      .attr("r", innerRadius);
 
   d3.csv("regions.csv", function(regionNames) {
-    d3.json("data.json", function(matrix) {
+    d3.json("friendship_matrix.json", function(matrix) {
 
       // Compute the chord layout.
       layout.matrix(matrix);
@@ -38,12 +38,14 @@ $(document).ready(function(){
       // Add a group per neighborhood.
       var group = svg.selectAll(".group")
           .data(layout.groups)
-          .enter().append("g")
+          .enter()
+          .append("g")
           .attr("class", "group")
           .on("mouseover", mouseover);
 
       // Add a mouseover title.
-      group.append("title").text(function(d, i) {
+      group.append("title")
+      .text(function(d, i) {
         return regionNames[i].name + ": " + formatPercent(d.value) + " of origins";
       });
 
@@ -51,7 +53,9 @@ $(document).ready(function(){
       var groupPath = group.append("path")
           .attr("id", function(d, i) { return "group" + i; })
           .attr("d", arc)
-          // .style("fill", function(d, i) { return regionNames[i].color; });
+          .style("fill", function(d, i) { return regionNames[i].color; })
+          .style("stroke", function(d, i){return regionNames[i].color; })
+          .style("stroke-width", 10)
           .attr("class", "arcs");
 
       // Add a text label.
@@ -71,7 +75,7 @@ $(document).ready(function(){
       // Add the chords.
       var chord = svg.selectAll(".chord")
           .data(layout.chords)
-        .enter().append("path")
+          .enter().append("path")
           .attr("class", "chord")
           .style("fill", function(d) { return regionNames[d.source.index].color; })
           .attr("d", path);
