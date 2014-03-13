@@ -102,64 +102,75 @@ $(document).ready(function(){
       var region = 0;
       var percent = true;
 
-function generateFromArray(region, matrix){
-    return matrix[region];
-}
+      function generateFromArray(region, matrix){
+          return matrix[region];
+      }
 
-function generateToArray(region, matrix){
-    var toArray = [];
-    for (var i = 0; i < matrix.length; i++) {
-       toArray.push(matrix[i][region]);
-    };
-    return toArray;
-}
+      function generateToArray(region, matrix){
+          var toArray = [];
+          for (var i = 0; i < matrix.length; i++) {
+             toArray.push(matrix[i][region]);
+          };
+          return toArray;
+      }
 
-function populateTableNumbers(region, matrix) {
-    var fromArray = generateFromArray(region, matrix);
-    var toArray = generateToArray(region, matrix);
-    for (var i = 0; i < fromArray.length; i++) {
-        $("#r" + (i + 1) + "from").text(fromArray[i]);
-        $("#r" + (i + 1) + "to").text(toArray[i]);
-    };
-}
+      function populateTableNumbers(region, matrix) {
+          var fromArray = generateFromArray(region, matrix);
+          var toArray = generateToArray(region, matrix);
+          $('#region_name').text($("#r" + (region+1) + " .name").text());
+          for (var i = 0; i < fromArray.length; i++) {
+              $("#r" + (i + 1) + " .from").text(fromArray[i]);
+              $("#r" + (i + 1) + " .to").text(toArray[i]);
+          };
+      }
 
-function populateTablePercent(region) {
-    var fromArray = generateFromArray(region, matrix);
-    var toArray = generateToArray(region, matrix);
-    for (var i = 0; i < fromArray.length; i++) {
-        $("#r" + (i + 1) + "from").text(fromArray[i] / fromArray.reduce(function(previousValue, currentValue, index, array){
-          return previousValue + currentValue;
-        }));
-        $("#r" + (i + 1) + "to").text(toArray[i] / toArray.reduce(function(previousValue, currentValue, index, array){
-          return previousValue + currentValue;
-        }));
-    };
-};
+      function populateTablePercent(region, matrix) {
+          var fromArray = generateFromArray(region, matrix);
+          var toArray = generateToArray(region, matrix);
+          $('#region_name').text($("#r" + (region+1) + " .name").text());
+          for (var i = 0; i < fromArray.length; i++) {
+              $("#r" + (i + 1) + " .from").text( arrayEntryToPercentOfArray(i, fromArray));
+              $("#r" + (i + 1) + " .to").text(arrayEntryToPercentOfArray(i, toArray));
+          };
+      };
 
-$(".arcs").on("click", function () {
-    var buttonid = $(this).attr("id");
-    var regionid = buttonid.substring(buttonid.length - 1, buttonid.length);
-    region = parseInt(regionid);
-    if (percent){
-        populateTablePercent(region, matrix);
-    } else {
-        populateTableNumbers(region, matrix);
-    };
-});
+      function sumArray(array){
+         return array.reduce(function(previousValue, currentValue, index, array){
+                return previousValue + currentValue;
+              });
+      }
 
-$("#toggle").on("click", function () {
-    if (percent) {
-        percent = false;
-    } else{
-        percent = true;
-    };
+      function arrayEntryToPercentOfArray(i, array){
+        var value = array[i] / sumArray(array) * 100;
+        if (value < 1) {return "<1%"} else{return Math.round(value) + "%";};
+      }
 
-    if (percent){
-        populateTablePercent(region, matrix);
-    } else {
-        populateTableNumbers(region, matrix);
-    };
-});
+      $(".arcs").on("click", function () {
+          var buttonid = $(this).attr("id");
+          var regionid = buttonid.substring(buttonid.length - 1, buttonid.length);
+          region = parseInt(regionid);
+          if (percent){
+              populateTablePercent(region, matrix);
+          } else {
+              populateTableNumbers(region, matrix);
+          };
+      });
+
+      $("#toggle").on("click", function () {
+          if (percent) {
+              percent = false;
+          } else{
+              percent = true;
+          };
+
+          if (percent){
+              populateTablePercent(region, matrix);
+          } else {
+              populateTableNumbers(region, matrix);
+          };
+      });
+
+      populateTablePercent(region, matrix);
 
     });
   });
