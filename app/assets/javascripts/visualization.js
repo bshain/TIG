@@ -123,8 +123,8 @@ function populateTablePercent(region) {
     var fromArray = generateFromArray(region, matrix);
     var toArray = generateToArray(region, matrix);
     for (var i = 0; i < fromArray.length; i++) {
-        $("#r" + (i + 1) + "from").text(fromArray[i] / sumArray(fromArray));
-        $("#r" + (i + 1) + "to").text(toArray[i] / sumArray(toArray));
+        $("#r" + (i + 1) + "from").text( arrayEntryToPercentOfArray(i, fromArray));
+        $("#r" + (i + 1) + "to").text(arrayEntryToPercentOfArray(i, toArray));
     };
 };
 
@@ -132,6 +132,11 @@ function sumArray(array){
    return array.reduce(function(previousValue, currentValue, index, array){
           return previousValue + currentValue;
         });
+}
+
+function arrayEntryToPercentOfArray(i, array){
+  var value = array[i] / sumArray(array) * 100;
+  if (value < 1) {return "<1%"} else{return Math.round(value) + "%";};
 }
 
 $(".arcs").on("click", function () {
