@@ -27,7 +27,7 @@ $(document).ready(function(){
       .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
   svg.append("circle")
-      .attr("r", 10);
+      .attr("r", innerRadius);
 
   d3.csv("regions.csv", function(regionNames) {
     d3.json("data.json", function(matrix) {
