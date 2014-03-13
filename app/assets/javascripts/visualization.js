@@ -113,18 +113,20 @@ $(document).ready(function(){
       function populateTableNumbers(region, matrix) {
           var fromArray = generateFromArray(region, matrix);
           var toArray = generateToArray(region, matrix);
+          $('#region_name').text($("#r" + (region+1) + " .name").text());
           for (var i = 0; i < fromArray.length; i++) {
-              $("#r" + (i + 1) + "from").text(fromArray[i]);
-              $("#r" + (i + 1) + "to").text(toArray[i]);
+              $("#r" + (i + 1) + " .from").text(fromArray[i]);
+              $("#r" + (i + 1) + " .to").text(toArray[i]);
           };
       }
 
-      function populateTablePercent(region) {
+      function populateTablePercent(region, matrix) {
           var fromArray = generateFromArray(region, matrix);
           var toArray = generateToArray(region, matrix);
+          $('#region_name').text($("#r" + (region+1) + " .name").text());
           for (var i = 0; i < fromArray.length; i++) {
-              $("#r" + (i + 1) + "from").text( arrayEntryToPercentOfArray(i, fromArray));
-              $("#r" + (i + 1) + "to").text(arrayEntryToPercentOfArray(i, toArray));
+              $("#r" + (i + 1) + " .from").text( arrayEntryToPercentOfArray(i, fromArray));
+              $("#r" + (i + 1) + " .to").text(arrayEntryToPercentOfArray(i, toArray));
           };
       };
 
@@ -165,7 +167,7 @@ $(document).ready(function(){
       });
 
       populateTablePercent(region, matrix);
-      
+
     });
   });
 });
