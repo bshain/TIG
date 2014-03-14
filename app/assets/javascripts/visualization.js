@@ -35,19 +35,30 @@ $(document).ready(function(){
       // Compute the chord layout.
       layout.matrix(matrix);
 
+      var tip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-10, 0])
+        .html(function(d, i) {
+        return "<strong>Frequency:</strong> <span style='color:red'>" + regionNames[i].name + " : " + formatPercent(d.value) + " of origins" + "</span>";
+        })
+
+        svg.call(tip);
+
       // Add a group per neighborhood.
       var group = svg.selectAll(".group")
           .data(layout.groups)
           .enter()
           .append("g")
           .attr("class", "group")
-          .on("mouseover", mouseover);
+          .on("mouseover", mouseover)
+          .on("mouseover", tip.show)
+          .on("mouseout", tip.hide);
 
       // Add a mouseover title.
-      group.append("title")
-      .text(function(d, i) {
-        return regionNames[i].name + ": " + formatPercent(d.value) + " of origins";
-      });
+      // group.append("title")
+      // .text(function(d, i) {
+      //   return regionNames[i].name + " : " + formatPercent(d.value) + " of origins";
+      // });
 
       // Add the group arc.
       var groupPath = group.append("path")
