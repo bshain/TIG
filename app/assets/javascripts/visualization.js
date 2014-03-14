@@ -82,12 +82,14 @@ function renderVisualization(matrix_json){
           .attr("dy", 15)
           .attr("pointer-events", "none");
 
+
       groupText.append("textPath")
           .attr("xlink:href", function(d, i) { return "#group" + i; })
           .text(function(d, i) { return regionNames[i].name; });
 
+
       // Remove the labels that don't fit. :(
-      groupText.filter(function(d, i) { return groupPath[0][i].getTotalLength() / 2 - 16 < this.getComputedTextLength(); })
+      groupText.filter(function(d, i) { return groupPath[0][i].getTotalLength() / 2 - 20 < this.getComputedTextLength(); })
           .remove();
           //Here, we need to truncate or abbreviate. Maybe add another column with an abbreviated name
 
@@ -209,7 +211,7 @@ function renderVisualization(matrix_json){
           friendship = false;
           $(this).text('Display the friendship visualization!');
           renderVisualization(inspiration_matrix);
-          $('#subtitle').text("Graph of what regions are inspired by other regions");
+          $('#subtitle').text("Inspirations sent and received");
         } else{
           friendship = true;
           $(this).text('Display the inspiration visualization!');

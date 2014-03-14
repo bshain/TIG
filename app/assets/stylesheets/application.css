@@ -14,6 +14,19 @@
  *= require_tree .
  */
 
+header{
+	background-color: dimgray;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	margin-bottom: 1em;
+}
+
+#title{
+	color: #ffffff;
+	letter-spacing: 1px;
+
+}
+
 .frame{
 	width: 100%;
 }
@@ -22,12 +35,24 @@
 	max-width: 65rem;
 }
 
+.to {
+	width: 60px;
+}
+
+.from{
+	width: 60px;
+}
+
 .sidebar p{
 	font-size: 10px;
 }
 
 .button{
 	width: 100%;
+}
+
+#toggle{
+	width: 50%;
 }
 
 [class* = 'col']{
@@ -58,7 +83,10 @@
 #visualization {
 	position: relative;
 	float: left;
-  /*padding-left: 100px;*/
+  	padding-top: 25px;
+  	font-size: 12px;
+  	font-weight: bold;
+  	letter-spacing: 1px
 }
 
 .d3-tip {
@@ -88,7 +116,7 @@
 }
 
 .group path {
-  fill-opacity: .5;
+  fade: 0.5;
 }
 
 path.chord {
@@ -109,6 +137,17 @@ path.chord {
   color: #ff0000;
   font-size: 25px;
 }
+
+table{
+	width: 100%;
+}
+
+#region_name{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+
 
 	
 
