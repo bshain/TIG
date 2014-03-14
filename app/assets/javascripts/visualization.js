@@ -178,10 +178,10 @@ function renderVisualization(matrix_json){
       $("#toggle").on("click", function () {
           if (percent) {
               percent = false;
-              $(this).text('Display the numbers as percents!')
+              $(this).text('Show %')
           } else{
               percent = true;
-              $(this).text('Display the numbers as numbers!')
+              $(this).text('Show #')
           };
 
           if (percent){

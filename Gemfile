@@ -36,6 +36,8 @@ end
 
 gem 'foundation-rails'
 
+gem 'whenever', :require => false
+
 # gem "d3-tip-rails"
 # gem 'd3-rails'
 
