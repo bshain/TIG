@@ -37,12 +37,14 @@ $(document).ready(function(){
 
       var tip = d3.tip()
         .attr('class', 'd3-tip')
-        .offset([-10, 0])
+        .attr("transform", "translate(0, 500)")
+        .offset([100, 100])
         .html(function(d, i) {
-        return "<strong>Frequency:</strong> <span style='color:red'>" + regionNames[i].name + " : " + formatPercent(d.value) + " of origins" + "</span>";
-        })
+        return "<strong>" + regionNames[i].name + "</strong> <br> <span style='color:red'>" + formatPercent(d.value) + " of all friendships originate here" + "</span>";
+        });
 
         svg.call(tip);
+
 
       // Add a group per neighborhood.
       var group = svg.selectAll(".group")
@@ -50,9 +52,8 @@ $(document).ready(function(){
           .enter()
           .append("g")
           .attr("class", "group")
-          .on("mouseover", mouseover)
-          .on("mouseover", tip.show)
-          .on("mouseout", tip.hide);
+          .on("mouseover", mouseover);
+          
 
       // Add a mouseover title.
       // group.append("title")
@@ -69,10 +70,15 @@ $(document).ready(function(){
           .style("stroke-width", 10)
           .attr("class", "arcs");
 
+      var section = d3.selectAll(".arcs")
+          .on("mouseover", tip.show)
+          .on("mouseout", tip.hide);
+
       // Add a text label.
       var groupText = group.append("text")
           .attr("x", 6)
-          .attr("dy", 15);
+          .attr("dy", 15)
+          .attr("pointer-events", "none");
 
       groupText.append("textPath")
           .attr("xlink:href", function(d, i) { return "#group" + i; })
