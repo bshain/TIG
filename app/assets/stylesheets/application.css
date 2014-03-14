@@ -46,7 +46,29 @@
 #visualization {
 	position: relative;
 	float: left;
+  padding-left: 100px;
 }
+
+.d3-tip {
+  line-height: 1;
+  font-size: 12px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+  }
+
+  .d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: left;
+}
+
 
 #circle circle {
   fill: none;
@@ -74,3 +96,8 @@ path.chord {
   color: #ff0000;
   font-size: 25px;
 }
+
+	
+
+
+

@@ -36,6 +36,7 @@ end
 
 gem 'foundation-rails'
 
+# gem "d3-tip-rails"
 # gem 'd3-rails'
 
 # Use ActiveModel has_secure_password

@@ -13,8 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-
-//= require_tree .
 //= require d3.v3
+//= require d3.tip.v0.6.3
 //= require visualization.js
+//= require_tree .
+
 $(function(){ $(document).foundation(); });
