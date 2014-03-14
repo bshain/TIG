@@ -46,6 +46,7 @@
 #visualization {
 	position: relative;
 	float: left;
+	padding-left: 100px;
 }
 
 .d3-tip {

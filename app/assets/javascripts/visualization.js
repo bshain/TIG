@@ -5,7 +5,7 @@ $(document).ready(function(){
       outerRadius = Math.min(width, height) / 2 - 10,
       innerRadius = outerRadius - 20;
 
-  var formatPercent = d3.format(".1%");
+  var formatPercent = d3.format("p");
 
   var arc = d3.svg.arc()
       .innerRadius(innerRadius)
@@ -37,8 +37,8 @@ $(document).ready(function(){
 
       var tip = d3.tip()
         .attr('class', 'd3-tip')
-        .attr("transform", "translate(0, 500)")
-        .offset([100, 100])
+        // .attr("transform", "translate(0, 500)")
+        .offset([-10, -10])
         .html(function(d, i) {
         return "<strong>" + regionNames[i].name + "</strong> <br> <span style='color:red'>" + formatPercent(d.value) + " of all friendships originate here" + "</span>";
         });

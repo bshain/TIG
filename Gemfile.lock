@@ -35,8 +35,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
-    d3-tip-rails (0.0.1)
-      railties (>= 3.1)
     erubis (2.7.0)
     execjs (2.0.2)
     foundation-rails (5.2.0.0)
@@ -114,7 +112,6 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
-  d3-tip-rails
   foundation-rails
   ignorable
   jbuilder (~> 1.2)
