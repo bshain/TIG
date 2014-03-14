@@ -47,3 +47,30 @@
 	position: relative;
 	float: left;
 }
+
+#circle circle {
+  fill: none;
+  pointer-events: all;
+}
+
+.group path {
+  fill-opacity: .5;
+}
+
+path.chord {
+  stroke: #000;
+  stroke-width: .25px;
+}
+
+#circle:hover path.fade {
+  display: none;
+}
+
+.arc {
+  stroke
+}
+
+.group[title]:hover:after {
+  color: #ff0000;
+  font-size: 25px;
+}

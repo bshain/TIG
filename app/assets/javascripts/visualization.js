@@ -189,10 +189,12 @@ $(document).ready(function(){
       friendship = false;
       $(this).text('Display the friendship visualization!');
       renderVisualization(inspiration_matrix);
+      $('#subtitle').text("Graph of what regions are inspired by other regions");
     } else{
       friendship = true;
       $(this).text('Display the inspiration visualization!');
       renderVisualization(friendship_matrix);
+      $('#subtitle').text("Graph of what regions friend other regions");
     };
   })
 });
