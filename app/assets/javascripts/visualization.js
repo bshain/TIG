@@ -35,16 +35,18 @@ function renderVisualization(matrix_json){
       // Compute the chord layout.
       layout.matrix(matrix);
 
+      
+
       var tip = d3.tip()
         .attr('class', 'd3-tip')
-        // .attr("transform", "translate(0, 500)")
-        .offset([-10, -10])
         .html(function(d, i) {
-        return "<strong>" + regionNames[i].name + "</strong> <br> <span style='color:red'>" + formatPercent(d.value) + " of all friendships originate here" + "</span>";
+        return "<strong>" + regionNames[i].name + "</strong>" ;
         });
+        // <br> <span style='color:red'>" + formatPercent(d.value) + " of all friendships originate here" + "</span>"
 
         svg.call(tip);
 
+        
 
       // Add a group per neighborhood.
       var group = svg.selectAll(".group")

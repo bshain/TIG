@@ -18,14 +18,22 @@
 	width: 100%;
 }
 
+.row {
+	max-width: 65rem;
+}
+
+.sidebar p{
+	font-size: 10px;
+}
+
 [class* = 'col']{
 	float: left;
 	
 }
 
-[class*='col']:last-of-type {
+/*[class*='col']:last-of-type {
   float: right;
-}
+}*/
 
 .col1{ width: 100%;}
 .col2{ width: 66.66%;}
@@ -46,7 +54,7 @@
 #visualization {
 	position: relative;
 	float: left;
-  padding-left: 100px;
+  /*padding-left: 100px;*/
 }
 
 .d3-tip {

@@ -1,81 +1,90 @@
 <section>
   <div class=frame>
-    <div class="col2">
-      <h1 id="title">The Social Networks of TakingITGlobal</h1>
-      <h2 id="subtitle">Graph of what regions friend other regions</h2>
-      <div id="visualization">
+    <div class="row">
+      <div class="large-12 columns">
+        <h1 id="title">The Social Networks of TakingITGlobal</h1>
+          <ul>
+          <li>Click on a region to see who is friending who</li>
+          <li>You've got two regions, A and B.  A chord (ribbon thingy) connects them.  The width of the chord where it touches A shows how many people from A have friended B, and vis versa</li>
+          <li>The colour of the chord shows which end is bigger</li>
+          <li>Mouseover to focus on connections to and from a given region</li>
+          </ul>
+      </div>
+    </div>
+      <div class="row">
+        <div class="large-4 columns sidebar">
+          <h2 id="subtitle">Graph of what regions friend other regions</h2>
+          <button id="friendship_or_inspiration">Display the inspiration visualization!</button>
+            <table>
+                <tr>
+                  <th colspan = "3">
+                    <h3 id = "region_name"></h3>
+                  </th>
+                </tr>
+                <tr>
+                  <th>Region</th>
+                  <th>To</th>
+                  <th >From</th>
+                </tr>
+                <tr id = 'r1'>
+                  <td class = 'name'>Africa</td>
+                  <td class = "to"></td>
+                  <td class = "from"></td>
+                </tr>
+                <tr id = 'r2'>
+                  <td class = 'name'>Asia</td>
+                  <td class = "to"></td>
+                  <td class = "from"></td>
+                </tr>
+                <tr id = 'r3'>
+                  <td class = 'name'>Oceana</td>
+                  <td class = "to"></td>
+                  <td class = "from"></td>
+                </tr>
+                <tr id = 'r4'>
+                  <td class = 'name'>Europe</td>
+                  <td class = "to"></td>
+                  <td class = "from"></td>
+                </tr>
+                <tr id = 'r5'>
+                  <td class = 'name'>North America</td>
+                  <td class = "to"></td>
+                  <td class = "from"></td>
+                </tr>
+                <tr id = 'r6'>
+                  <td class = 'name'>South America</td>
+                  <td class = "to"></td>
+                  <td class = "from"></td>
+                </tr>
+                <tr id = 'r7'>
+                  <td class = 'name'>Polar Regions</td>
+                  <td class = "to"></td>
+                  <td class = "from"></td>
+                </tr>
+                <tr id = 'r8'>
+                  <td class = 'name'>Central America and Caribbean</td>
+                  <td class = "to"></td>
+                  <td class = "from"></td>
+                </tr>
+                <tr id = 'r9'>
+                  <td class = 'name'>Middle East and North Africa</td>
+                  <td class = "to"></td>
+                  <td class = "from"></td>
+                </tr>
+            </table>
+            <button id="toggle">Display the numbers as numbers!</button>
+
+        </div>
+
+        <div class="large-8 columns">
+
+          <div id="visualization">
+        
+          </div>
+      
+        </div>
         
       </div>
-      
-    </div>
-
-    <div class="col3">
-    <p>Mouseover to focus on connections to and from a given region</p>
-
-    <p>Links are directional.  The frequency of connections issueing from a region is depicted by the width of the chord where it connects to the region.  The width at the opposite end indicates the number of connections coming to a region.  The chord's colour indicates the larger of the two. </p>
-
-    <p>Example: There are many connections between Asia and North America.  If there are more connections from North America to Asia than from Asia to North America, the chord will have the colour of North America.</p>
-
-    <p>Click on a region to get a detailed accounting of links to and from the region.</p>
-      <table>
-          <tr>
-            <th colspan = "3">
-              <h3 id = "region_name"></h3>
-            </th>
-          </tr>
-          <tr>
-            <th>Region</th>
-            <th>To</th>
-            <th >From</th>
-          </tr>
-          <tr id = 'r1'>
-            <td class = 'name'>Africa</td>
-            <td class = "to"></td>
-            <td class = "from"></td>
-          </tr>
-          <tr id = 'r2'>
-            <td class = 'name'>Asia</td>
-            <td class = "to"></td>
-            <td class = "from"></td>
-          </tr>
-          <tr id = 'r3'>
-            <td class = 'name'>Oceana</td>
-            <td class = "to"></td>
-            <td class = "from"></td>
-          </tr>
-          <tr id = 'r4'>
-            <td class = 'name'>Europe</td>
-            <td class = "to"></td>
-            <td class = "from"></td>
-          </tr>
-          <tr id = 'r5'>
-            <td class = 'name'>North America</td>
-            <td class = "to"></td>
-            <td class = "from"></td>
-          </tr>
-          <tr id = 'r6'>
-            <td class = 'name'>South America</td>
-            <td class = "to"></td>
-            <td class = "from"></td>
-          </tr>
-          <tr id = 'r7'>
-            <td class = 'name'>Polar Regions</td>
-            <td class = "to"></td>
-            <td class = "from"></td>
-          </tr>
-          <tr id = 'r8'>
-            <td class = 'name'>Central America and Caribbean</td>
-            <td class = "to"></td>
-            <td class = "from"></td>
-          </tr>
-          <tr id = 'r9'>
-            <td class = 'name'>Middle East and North Africa</td>
-            <td class = "to"></td>
-            <td class = "from"></td>
-          </tr>
-      </table>
-      <button id="toggle">Display the numbers as numbers!</button>
-      <button id="friendship_or_inspiration">Display the inspiration visualization!</button>
-    </div>
+    
   </div>
 </section>
