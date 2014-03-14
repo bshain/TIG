@@ -1,11 +1,11 @@
 $(document).ready(function(){
-
+function renderVisualization(matrix_json){
   var width = 750,
       height = 750,
       outerRadius = Math.min(width, height) / 2 - 10,
       innerRadius = outerRadius - 20;
 
-  var formatPercent = d3.format("p");
+  var formatPercent = d3.format(".1%");
 
   var arc = d3.svg.arc()
       .innerRadius(innerRadius)
@@ -30,7 +30,7 @@ $(document).ready(function(){
       .attr("r", innerRadius);
 
   d3.csv("regions.csv", function(regionNames) {
-    d3.json("friendship_matrix.json", function(matrix) {
+    d3.json(matrix_json, function(matrix) {
 
       // Compute the chord layout.
       layout.matrix(matrix);
@@ -176,8 +176,10 @@ $(document).ready(function(){
       $("#toggle").on("click", function () {
           if (percent) {
               percent = false;
+              $(this).text('Display the numbers as percents!')
           } else{
               percent = true;
+              $(this).text('Display the numbers as numbers!')
           };
 
           if (percent){
@@ -191,4 +193,27 @@ $(document).ready(function(){
 
     });
   });
+  };
+
+  var friendship_matrix = "friendship_matrix.json",
+      inspiration_matrix = "inspiration_matrix.json",
+      friendship = true
+
+    renderVisualization(friendship_matrix);
+
+    $("#friendship_or_inspiration").on('click', function(){
+        $('svg').remove();
+        if (friendship){
+          friendship = false;
+          $(this).text('Display the friendship visualization!');
+          renderVisualization(inspiration_matrix);
+          $('#subtitle').text("Graph of what regions are inspired by other regions");
+        } else{
+          friendship = true;
+          $(this).text('Display the inspiration visualization!');
+          renderVisualization(friendship_matrix);
+          $('#subtitle').text('Graph of what regions friend other regions');
+        };
+    })
+
 });
