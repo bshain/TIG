@@ -26,6 +26,10 @@
 	font-size: 10px;
 }
 
+.button{
+	width: 100%;
+}
+
 [class* = 'col']{
 	float: left;
 	
@@ -96,8 +100,9 @@ path.chord {
   display: none;
 }
 
-.arc {
-  stroke
+.arcs {
+  stroke: #000;
+  stroke-opacity: 0.5;
 }
 
 .group[title]:hover:after {

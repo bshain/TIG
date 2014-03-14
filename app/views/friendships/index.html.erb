@@ -5,8 +5,9 @@
         <h1 id="title">The Social Networks of TakingITGlobal</h1>
           <ul>
           <li>Click on a region to see who is friending who</li>
-          <li>You've got two regions, A and B.  A chord (ribbon thingy) connects them.  The width of the chord where it touches A shows how many people from A have friended B, and vis versa</li>
-          <li>The colour of the chord shows which end is bigger</li>
+          <li>Each region is connected with every other region. For example, region 'A' is connected to region 'B'.</li>
+          <li>The width of the chord where it touches region 'A' shows how many people from 'A' have friended 'B', and vis versa</li>
+          <li>The colour of the chord shows which region has sent more friendships</li>
           <li>Mouseover to focus on connections to and from a given region</li>
           </ul>
       </div>
@@ -14,7 +15,7 @@
       <div class="row">
         <div class="large-4 columns sidebar">
           <h2 id="subtitle">Graph of what regions friend other regions</h2>
-          <button id="friendship_or_inspiration">Display the inspiration visualization!</button>
+          <button id="friendship_or_inspiration" class="button">Display the inspiration visualization!</button>
             <table>
                 <tr>
                   <th colspan = "3">
@@ -72,7 +73,7 @@
                   <td class = "from"></td>
                 </tr>
             </table>
-            <button id="toggle">Display the numbers as numbers!</button>
+            <button id="toggle" class="button">Show #</button>
 
         </div>
 
