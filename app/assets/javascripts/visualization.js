@@ -102,14 +102,14 @@ function renderVisualization(matrix_json){
           .attr("d", path);
 
       // Add an elaborate mouseover title for each chord.
-      chord.append("title").text(function(d) {
-        return regionNames[d.source.index].name
-            + " → " + regionNames[d.target.index].name
-            + ": " + formatPercent(d.source.value)
-            + "\n" + regionNames[d.target.index].name
-            + " → " + regionNames[d.source.index].name
-            + ": " + formatPercent(d.target.value);
-      });
+      // chord.append("title").text(function(d) {
+      //   return regionNames[d.source.index].name
+      //       + " → " + regionNames[d.target.index].name
+      //       + ": " + formatPercent(d.source.value)
+      //       + "\n" + regionNames[d.target.index].name
+      //       + " → " + regionNames[d.source.index].name
+      //       + ": " + formatPercent(d.target.value);
+      // });
 
       function mouseover(d, i) {
         chord.classed("fade", function(p) {
@@ -216,7 +216,7 @@ function renderVisualization(matrix_json){
           friendship = true;
           $(this).text('Display the inspiration visualization!');
           renderVisualization(friendship_matrix);
-          $('#subtitle').text('Graph of what regions friend other regions');
+          $('#subtitle').text('Friendships sent and received');
         };
     })
 
